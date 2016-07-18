@@ -13,6 +13,8 @@ git commit
 git status
 git pull 
 git push 
+git checkout [branch]: switch to [branch]
+git checkout -b [branch]: make a new branch called [branch]git 
 
 steps to add data from local computer to repository
 1. git status
