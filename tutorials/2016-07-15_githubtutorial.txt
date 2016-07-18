@@ -1,0 +1,16 @@
+2016 July 15th
+
+Github tutorial
+
+Github tasks
+Forking a branch
+add upstream remote
+
+
+commands we reviewed:
+git status
+git pull 
+git push 
+git add
+git commit 
+

@@ -1,5 +1,0 @@
-2016 July 15th
-
-Github tutorial
-
-Forking a branch
