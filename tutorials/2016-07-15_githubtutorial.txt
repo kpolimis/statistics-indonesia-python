@@ -8,9 +8,18 @@ add upstream remote
 
 
 commands we reviewed:
+git add
+git commit 
 git status
 git pull 
 git push 
-git add
-git commit 
 
+steps to add data from local computer to repository
+1. git status
+   see the files you modified
+2. git add/rm 
+   add/delete the files you modified to staging 
+3. git commit 
+   commit the files you added/deleted for staging with message
+4. git push 
+   push files from local [branch] to repository [branch]
