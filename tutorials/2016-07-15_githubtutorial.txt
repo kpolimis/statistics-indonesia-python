@@ -4,7 +4,7 @@ Github tutorial
 
 Github tasks
 forking a branch: fork a branch to your account 
-add upstream remote: git add upstream remote [address.git]
+add upstream remote: git remote add upstream [address.git]
 
 commands we reviewed:
 git add
