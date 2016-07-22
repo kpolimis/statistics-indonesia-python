@@ -68,4 +68,4 @@ target/
 #Ipython Notebook
 notebooks/.ipynb_checkpoints/*
 *.ipynb_checkpoints/
-*.ipynb
+
