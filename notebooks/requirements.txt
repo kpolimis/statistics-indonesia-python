@@ -1,0 +1,9 @@
+lxml
+requests
+pandas
+numpy
+matplotlib
+shapely
+descartes
+fiona
+pysal
