@@ -1,0 +1,4 @@
+Unofficial Windows Binaries for Python Extension Packages
+by Christoph Gohlke, Laboratory for Fluorescence Dynamics, University of California, Irvine.
+
+http://www.lfd.uci.edu/~gohlke/pythonlibs/
