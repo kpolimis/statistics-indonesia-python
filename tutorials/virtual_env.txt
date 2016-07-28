@@ -1,0 +1,9 @@
+# create a virtual environment
+
+conda create —n [environment_name] python=[version]
+
+ex:
+conda create —n virtual27 python=2.7
+
+creates a virtual environment named “virtual27” with a Python version of 2.7 
+ 
