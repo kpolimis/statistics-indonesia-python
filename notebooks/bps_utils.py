@@ -1,6 +1,11 @@
 import urllib
 import os
 import pandas as pd
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
+from pdfminer.pdfpage import PDFPage
+from cStringIO import StringIO
 
 
 def download_if_needed(URL, filename):
@@ -33,6 +38,16 @@ def get_Istat_data():
     download_if_needed('http://www.istat.it/en/files/2016/02/ISTAT_MFR_' +
                        'HBS_2014_IT1.zip',
                        'Istat_HBS_2014.zip')
+
+
+def get_Sukarno_speech():
+    """
+    Download President Sukarno Speech at
+    the Opening of the Bandung Conference, April 18 1955
+    """
+    download_if_needed('http://www.cvce.eu/content/publication/2001/9/5/88d3' +
+                       'f71c-c9f9-415a-b397-b27b8581a4f5/publishable_en.pdf',
+                       'sukarno_speech.pdf')
 
 
 def get_HBS_data():
@@ -107,3 +122,37 @@ def cmap_discretize(cmap, N):
 
     return matplotlib.colors.LinearSegmentedColormap(cmap.name + "_%d" % N,
                                                      cdict, 1024)
+
+
+def convert_pdf_to_txt(path):
+    """
+    This function converts a .pdf file to text
+    @path: file path to .pdf document
+
+    from: http://stackoverflow.com/questions/26494211/
+    extracting-text-from-a-pdf-file-using-pdfminer-in-python/26495057#26495057
+
+    """
+    rsrcmgr = PDFResourceManager()
+    retstr = StringIO()
+    codec = 'utf-8'
+    laparams = LAParams()
+    device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
+    fp = file(path, 'rb')
+    interpreter = PDFPageInterpreter(rsrcmgr, device)
+    password = ""
+    maxpages = 0
+    caching = True
+    pagenos = set()
+
+    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
+                                  password=password, caching=caching,
+                                  check_extractable=True):
+        interpreter.process_page(page)
+
+    text = retstr.getvalue()
+
+    fp.close()
+    device.close()
+    retstr.close()
+    return text
