@@ -1,6 +1,6 @@
 # folders
 
-sentiment_analysis/data/*
+text_analysis/data/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
