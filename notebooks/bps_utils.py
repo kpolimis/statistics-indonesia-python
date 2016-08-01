@@ -40,14 +40,22 @@ def get_Istat_data():
                        'Istat_HBS_2014.zip')
 
 
-def get_Sukarno_speech():
+def get_Sukarno_Bandung_speech():
     """
     Download President Sukarno Speech at
     the Opening of the Bandung Conference, April 18 1955
     """
     download_if_needed('http://www.cvce.eu/content/publication/2001/9/5/88d3' +
                        'f71c-c9f9-415a-b397-b27b8581a4f5/publishable_en.pdf',
-                       'sukarno_speech.pdf')
+                       'sukarno_bandung_speech.pdf')
+
+def get_Sukarno_Jogjakarta_speech():
+    """
+    Download President Sukarno Speech at Jogjakarta, on 19th December 1961
+    """
+    download_if_needed('http://www.cvce.eu/content/publication/2001/9/5/88d3' +
+                       'f71c-c9f9-415a-b397-b27b8581a4f5/publishable_en.pdf',
+                       'sukarno_jogjakarta_speech.pdf')
 
 
 def get_HBS_data():
