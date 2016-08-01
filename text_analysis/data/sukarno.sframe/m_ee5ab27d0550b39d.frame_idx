@@ -1,9 +1,0 @@
-[sframe]
-version=0
-num_segments=0
-num_columns=1
-nrows=1
-[column_names]
-0000=speech
-[column_files]
-0000=m_ee5ab27d0550b39d.sidx:0
