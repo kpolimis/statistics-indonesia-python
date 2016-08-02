@@ -1,11 +1,16 @@
-import urllib
 import os
+import re
+import urllib
+import nltk
+import nltk.data
 import pandas as pd
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.converter import TextConverter
-from pdfminer.layout import LAParams
-from pdfminer.pdfpage import PDFPage
+from bs4 import BeautifulSoup
 from cStringIO import StringIO
+from nltk.corpus import stopwords
+from pdfminer.pdfpage import PDFPage
+from pdfminer.layout import LAParams
+from pdfminer.converter import TextConverter
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 
 
 def download_if_needed(URL, filename):
@@ -49,6 +54,7 @@ def get_Sukarno_Bandung_speech():
                        'f71c-c9f9-415a-b397-b27b8581a4f5/publishable_en.pdf',
                        'sukarno_bandung_speech.pdf')
 
+
 def get_Sukarno_Jogjakarta_speech():
     """
     Download President Sukarno Speech at Jogjakarta, on 19th December 1961
@@ -66,6 +72,48 @@ def get_HBS_data():
     zf = zipfile.ZipFile('Istat_HBS_2014.zip')
     file_handle = zf.open('FILENAME.csv')
     return pd.read_csv(file_handle)
+
+
+def speech_to_wordlist(speech, remove_stopwords=False):
+    # Function to convert a document to a sequence of words,
+    # optionally removing stop words.  Returns a list of words.
+    #
+    #
+    # 1. Remove non-letters
+    speech = re.sub("[^a-zA-Z]", " ", speech)
+    #
+    # 3. Convert words to lower case and split them
+    words = speech.lower().split()
+    #
+    # 4. Optionally remove stop words (false by default)
+    if remove_stopwords:
+        stops = set(stopwords.words("english"))
+        words = [w for w in words if not w in stops]
+    #
+    # 5. Return a list of words
+    return(words)
+
+
+def speech_to_sentences(speech, tokenizer, remove_stopwords=False):
+    # Function to split a speechinto parsed sentences. Returns a
+    # list of sentences, where each sentence is a list of words
+    #
+    # 1. Use the NLTK tokenizer to split the paragraph into sentences
+    # Download the punkt tokenizer for sentence splitting
+    raw_sentences = tokenizer.tokenize(speech.strip())
+    #
+    # 2. Loop over each sentence
+    sentences = []
+    for raw_sentence in raw_sentences:
+        # If a sentence is empty, skip it
+        if len(raw_sentence) > 0:
+            # Otherwise, call review_to_wordlist to get a list of words
+            sentences.append(speech_to_wordlist(raw_sentence,
+                             remove_stopwords))
+    #
+    # Return the list of sentences (each sentence is a list of words,
+    # so this returns a list of lists
+    return sentences
 
 
 def to_xml(df, filename=None, mode='w'):
