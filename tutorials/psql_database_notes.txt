@@ -1,0 +1,11 @@
+
+# create database
+createdb -O$USER -Eutf8 DATABASE
+# open database and initialize postgis extension
+psql -U $USER -W DATABASE
+CREATE EXTENSION postgis;
+# format database with the a a schema
+psql -d DATABASE -a -f schema.sql
+
+# resources 
+# postgis extensions: http://postgis.net/install/
