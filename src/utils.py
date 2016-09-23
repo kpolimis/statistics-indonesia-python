@@ -5,7 +5,7 @@ import nltk
 import nltk.data
 import pandas as pd
 from bs4 import BeautifulSoup
-from cStringIO import StringIO
+from io import StringIO
 from nltk.corpus import stopwords
 from pdfminer.pdfpage import PDFPage
 from pdfminer.layout import LAParams
