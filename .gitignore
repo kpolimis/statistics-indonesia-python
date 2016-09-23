@@ -1,6 +1,9 @@
 # folders
 text_analysis/data/*
 
+# sframes
+*.sframe 
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
