@@ -78,3 +78,6 @@ target/
 *.ini
 *.bin
 
+Mac files
+*.DS_Store
+
