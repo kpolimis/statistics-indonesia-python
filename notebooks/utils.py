@@ -5,7 +5,7 @@ import nltk
 import nltk.data
 import pandas as pd
 from bs4 import BeautifulSoup
-from io import StringIO
+from cStringIO import StringIO
 from nltk.corpus import stopwords
 from pdfminer.pdfpage import PDFPage
 from pdfminer.layout import LAParams
@@ -185,8 +185,15 @@ def convert_pdf_to_txt(path):
     This function converts a .pdf file to text
     @path: file path to .pdf document
 
-    from: http://stackoverflow.com/questions/26494211/
-    extracting-text-from-a-pdf-file-using-pdfminer-in-python/26495057#26495057
+    references:
+
+    1. http://stackoverflow.com/questions/26494211/extracting-text-from-a-pdf-file-using-pdfminer-in-python/26495057#26495057
+
+    2. https://stackoverflow.com/questions/5725278/how-do-i-use-pdfminer-as-a-library
+
+    3. https://stackoverflow.com/questions/26494211/extracting-text-from-a-pdf-file-using-pdfminer-in-python
+
+    4. https://gist.github.com/jmcarp/7105045
 
     """
     rsrcmgr = PDFResourceManager()
